@@ -1,12 +1,14 @@
 {
     "version": "1.0.0",
-    "summary": "helpful summary of your project, less than 80 characters",
-    "repository": "https://github.com/user/project.git",
+    "summary": "Calculate rounded hexagons around center",
+    "repository": "https://github.com/paramanders/elm-hexagon.git",
     "license": "BSD3",
     "source-directories": [
         "."
     ],
-    "exposed-modules": [],
+    "exposed-modules": [
+      "Hexagon"
+    ],
     "dependencies": {
         "elm-lang/core": "4.0.1 <= v < 5.0.0",
         "elm-lang/svg": "1.1.0 <= v < 2.0.0"
