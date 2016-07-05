@@ -1,4 +1,4 @@
-module Hexagon exposing (Point(..), Hexagon(..), p, hex, svgHexagon)
+module Hexagon exposing (Point, Hexagon, p, hex, svgHexagon)
 
 {-| Create SVG hexagons with rounded corners
 
@@ -18,13 +18,13 @@ import String
 import Svg exposing (..)
 import Svg.Attributes exposing (..)
 
-
+{-| Point definition to define hexagon center & corner points |-}
 type alias Point =
     { x : Float
     , y : Float
     }
 
-
+{-| Hexagon definition to generate SVG tags from |-}
 type alias Hexagon =
     { center : Point
     , rotation : Float
@@ -32,12 +32,12 @@ type alias Hexagon =
     , fill : String
     }
 
-
+{-| Shortcut to create a `Point` |-}
 p : Float -> Float -> Point
 p =
     Point
 
-
+{-| Shortcut to create a `Hexagon` |-}
 hex : Point -> Float -> Float -> String -> Hexagon
 hex =
     Hexagon
@@ -86,7 +86,7 @@ drawRounding prefix ( start, control, end ) =
         , "Q" ++ (String.join "," (List.map toString [ control.x, control.y, end.x, end.y ]))
         ]
 
-
+{-| Create a SVG path for a `Hexagon` definition |-}
 svgHexagon : Hexagon -> Svg msg
 svgHexagon hexagon =
     let
