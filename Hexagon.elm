@@ -1,4 +1,17 @@
-module Hexagon exposing (..)
+module Hexagon exposing (Point(..), Hexagon(..), p, hex, svgHexagon)
+
+{-| Create SVG hexagons with rounded corners
+
+# Definition
+@docs Point, Hexagon
+
+# Common Helpers
+@docs p, hex
+
+# Rendering
+@docs svgHexagon
+
+-}
 
 import List
 import String
