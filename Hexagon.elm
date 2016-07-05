@@ -30,19 +30,6 @@ hex =
     Hexagon
 
 
-main : Svg msg
-main =
-    svg [ viewBox "0 0 473.9 473.9", height "473.9", width "473.9" ]
-        [ defs []
-            [ linearGradient [ id "gradient", x1 "236.63", y1 "361.95", x2 "236.63", y2 "22.56", gradientUnits "userSpaceOnUse" ]
-                [ stop [ offset "0", stopColor "#f7931e" ] []
-                , stop [ offset "1", stopColor "#f15a24" ] []
-                ]
-            ]
-        , svgHexagon (hex (p 127.575 127.575) 15 125.15 "url(#gradient)")
-        ]
-
-
 calculateCorners : Hexagon -> List Point
 calculateCorners hexagon =
     let
