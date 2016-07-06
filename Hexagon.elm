@@ -29,7 +29,6 @@ type alias Hexagon =
     { center : Point
     , rotation : Float
     , radius : Float
-    , fill : String
     }
 
 {-| Shortcut to create a `Point` |-}
@@ -38,7 +37,7 @@ p =
     Point
 
 {-| Shortcut to create a `Hexagon` |-}
-hex : Point -> Float -> Float -> String -> Hexagon
+hex : Point -> Float -> Float -> Hexagon
 hex =
     Hexagon
 
@@ -87,8 +86,8 @@ drawRounding prefix ( start, control, end ) =
         ]
 
 {-| Create a SVG path for a `Hexagon` definition |-}
-svgHexagon : Hexagon -> Svg msg
-svgHexagon hexagon =
+svgHexagon : List (Attribute msg) -> Hexagon -> Svg msg
+svgHexagon attrs hexagon =
     let
         corners =
             calculateCorners hexagon
@@ -104,10 +103,9 @@ svgHexagon hexagon =
     in
         case sections of
             Just (x, xs) ->
-                Svg.path [ d (String.concat ((drawRounding "M" x) :: (List.map (drawRounding "L") xs)))
-                         , fill hexagon.fill
-                         ]
-                         []
+                Svg.path
+                    ([ d (String.concat ((drawRounding "M" x) :: (List.map (drawRounding "L") xs)))] ++ attrs)
+                    []
 
             Nothing ->
                 text ""
